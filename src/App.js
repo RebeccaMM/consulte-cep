@@ -1,28 +1,61 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
+import { consultarCEP } from './actions';
+
+import { Button, Input } from 'semantic-ui-react';
+import 'semantic-ui-css/semantic.min.css';
+
 import './App.css';
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+    state = {
+        cep: ''
+    }
+
+    inputChange = event => {
+        this.setState({
+            cep: event.target.value
+        })
+    }
+
+    render() {
+        const { consultarCEP, lugar } = this.props;
+
+        const { cep } = this.state;
+
+        return (
+            <div className="App">
+                <div className="Consult">
+                    <h4>Consultar</h4>
+                    <div className="FormContainer">
+                        CEP
+                        <Input className="Input" type='text' onChange={this.inputChange} value={cep} />
+                        <Button className="Button" color='blue' size="small" onClick={() => consultarCEP(cep)}>
+                            Buscar
+                        </Button>
+                    </div>
+                </div>
+                <div>
+                    <h1>{lugar}</h1>
+                    {/* {lugar.bairro }
+                    {`${lugar.localidade} - ${lugar.uf}`}
+                    {lugar.cep} */}
+                </div>
+
+                
+            </div>
+        );
+    }
 }
 
-export default App;
+const mapStateToProps = store => ({
+    lugar: store.clickState.lugar
+});
+
+const mapDispatchToProps = dispatch =>
+    bindActionCreators({ consultarCEP }, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
