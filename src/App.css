@@ -17,3 +17,19 @@
   margin-left: 20px;
   margin-right: 10px;
 }
+
+.ResultContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 5px;
+  padding: 10px;
+  border: 2px solid #ededed;
+
+}
+
+.CloseResult {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}

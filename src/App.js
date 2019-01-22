@@ -8,6 +8,8 @@ import { consultarCEP } from './actions';
 import { Button, Input } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 
+import Result from './components/Result';
+
 import './App.css';
 
 class App extends Component {
@@ -38,9 +40,7 @@ class App extends Component {
                         </Button>
                     </div>
                 </div>
-                <div>
-                  {lugar && (<h2>{lugar.logradouro }</h2>)}
-                </div>
+                <Result lugar={lugar} />
 
                 
             </div>
