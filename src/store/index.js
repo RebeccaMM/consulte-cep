@@ -1,6 +1,6 @@
 import { applyMiddleware, createStore } from 'redux';
 import { Reducers } from '../reducers';
 
-import promise from 'redux-promise';
+import thunk from 'redux-thunk';
 
-export const Store = applyMiddleware(promise)(createStore)(Reducers);
+export const Store = applyMiddleware(thunk)(createStore)(Reducers);

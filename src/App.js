@@ -39,10 +39,7 @@ class App extends Component {
                     </div>
                 </div>
                 <div>
-                    <h1>{lugar}</h1>
-                    {/* {lugar.bairro }
-                    {`${lugar.localidade} - ${lugar.uf}`}
-                    {lugar.cep} */}
+                  {lugar && (<h2>{lugar.logradouro }</h2>)}
                 </div>
 
                 
